@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antivirus Scanner</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container Box */
+        .container, .tools-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #38bdf8;
+        }
+
+        /* Buttons */
+        button {
+            background: linear-gradient(90deg, #38bdf8, #3b82f6);
+            border: none;
+            padding: 14px 20px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 6px;
+            margin-top: 15px;
+            width: 100%;
+            max-width: 250px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Status Styling */
+        #status {
+            font-size: 18px;
+            margin: 15px 0;
+        }
+
+        .safe {
+            color: #10b981;
+        }
+
+        /* Hidden Pages */
+        .hidden {
+            display: none;
+        }
+
+        /* Page 2: Antivirus Tools */
+        .tools-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 25px;
+        }
+
+        .tool {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .price {
+            color: #facc15;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Back Button */
+        .back-btn {
+            background: #ef4444;
+        }
+
+        /* Download Button (Updated Color) */
+        .download-btn {
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+            color: white;
+            font-weight: bold;
+            border: none;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(90deg, #d97706, #b45309);
+        }
+
+        /* Payment Notice */
+        .payment-notice {
+            font-style: italic;
+            font-weight: bold;
+            font-size: 14px;
+            color: #facc15;
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* WhatsApp Contact */
+        .whatsapp-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .whatsapp-icon {
+            width: 120px;
+            height: auto;
+            border-radius: 6px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page 1: Antivirus Dashboard -->
+    <div id="page1" class="container">
+        <h1>Antivirus Scanner</h1>
+        <p id="status">Status: <span class="safe">System Secure</span></p>
+        <button id="scanBtn">Start Scan</button>
+    </div>
+
+    <!-- Page 2: Antivirus Tools -->
+    <div id="page2" class="tools-container hidden">
+        <h1>Antivirus Tools - $80</h1>
+        <div class="tool">✔️ Real-time Protection</div>
+        <div class="tool">✔️ Malware Scanner</div>
+        <div class="tool">✔️ Secure VPN</div>
+        <p class="price">Price: $80</p>
+        
+        <!-- Download Button -->
+        <button class="download-btn" id="downloadBtn">Download Now</button>
+
+        <!-- Payment Notice (Hidden Initially) -->
+        <p class="payment-notice" id="paymentNotice">
+            App needs payment visit:
+        </p>
+
+        <!-- WhatsApp Contact Link -->
+        <a href="https://wa.me/27640052011?text=hi+requesting+app" class="whatsapp-link" id="whatsappLink">
+            <img src="https://files.catbox.moe/btnsuc.jpg" alt="WhatsApp" class="whatsapp-icon" id="whatsappIcon">
+        </a>
+
+        <br>
+        <button class="back-btn" id="backBtn">Go Back</button>
+    </div>
+
+    <script>
+        // Show Page 2 on Scan Click
+        document.getElementById("scanBtn").addEventListener("click", function() {
+            document.getElementById("page1").classList.add("hidden");
+            document.getElementById("page2").classList.remove("hidden");
+        });
+
+        // Go Back to Page 1
+        document.getElementById("backBtn").addEventListener("click", function() {
+            document.getElementById("page2").classList.add("hidden");
+            document.getElementById("page1").classList.remove("hidden");
+        });
+
+        // Show Payment Notice & WhatsApp Link on Download Click
+        document.getElementById("downloadBtn").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent direct download
+            
+            // Show alert message
+            alert("Click the WhatsApp logo to proceed with payment.");
+
+            // Show payment notice and WhatsApp link
+            document.getElementById("paymentNotice").style.display = "block";
+            document.getElementById("whatsappIcon").style.display = "block";
+        });
+    </script>
+
+</body>
+</html>
